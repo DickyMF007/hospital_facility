@@ -13,10 +13,10 @@ class UserListPage extends StatefulWidget { // Mendefinisikan kelas UserListPage
 class _UserListPageState extends State<UserListPage> { // Mendefinisikan state untuk UserListPage
   final List<Map<String, dynamic>> users = [ // Daftar pengguna yang akan ditampilkan
     {
-      'id': '1', // ID pengguna
-      'name': 'John Doe', // Nama pengguna
-      'email': 'john.doe@example.com', // Email pengguna
-      'role': 'Admin', // Peran pengguna
+      'id': '1',
+      'name': 'John Doe',
+      'email': 'john.doe@example.com',
+      'role': 'Admin',
     },
     {
       'id': '2',
@@ -29,6 +29,48 @@ class _UserListPageState extends State<UserListPage> { // Mendefinisikan state u
       'name': 'Bob Johnson',
       'email': 'bob.johnson@example.com',
       'role': 'Nurse',
+    },
+    {
+      'id': '4',
+      'name': 'Liam Brown',
+      'email': 'liam.brown@example.com',
+      'role': 'Receptionist',
+    },
+    {
+      'id': '5',
+      'name': 'Mia White',
+      'email': 'mia.white@example.com',
+      'role': 'Pharmacist',
+    },
+    {
+      'id': '6',
+      'name': 'Noah Green',
+      'email': 'noah.green@example.com',
+      'role': 'Surgeon',
+    },
+    {
+      'id': '7',
+      'name': 'Olivia Black',
+      'email': 'olivia.black@example.com',
+      'role': 'Therapist',
+    },
+    {
+      'id': '8',
+      'name': 'Sophia Yellow',
+      'email': 'sophia.yellow@example.com',
+      'role': 'Technician',
+    },
+    {
+      'id': '9',
+      'name': 'James Red',
+      'email': 'james.red@example.com',
+      'role': 'Administrator',
+    },
+    {
+      'id': '10',
+      'name': 'Isabella Blue',
+      'email': 'isabella.blue@example.com',
+      'role': 'Consultant',
     },
   ];
 

@@ -8,9 +8,19 @@ class Navbar extends StatelessWidget { // Mendefinisikan kelas Navbar yang merup
     // Mendapatkan nama rute saat ini untuk menyoroti tab yang aktif
     final String currentRoute = ModalRoute.of(context)?.settings.name ?? '/'; // Mengambil nama rute saat ini, jika tidak ada, gunakan '/'
 
+    // Map untuk menentukan warna berdasarkan rute
+    final Map<String, Color> routeColors = {
+      '/': Colors.green, // Home
+      '/users': Colors.blue, // Users
+      '/patients': Colors.red, // Patients
+      '/items': Colors.orange, // Items
+      '/profile': Colors.purple, // Profile
+    };
+
     return BottomNavigationBar( // Mengembalikan widget BottomNavigationBar
       currentIndex: _getSelectedIndex(currentRoute), // Menentukan indeks yang dipilih berdasarkan rute saat ini
       type: BottomNavigationBarType.fixed, // Menetapkan tipe BottomNavigationBar
+      selectedItemColor: routeColors[currentRoute] ?? Colors.blue, // Mengatur warna item yang dipilih berdasarkan rute
       onTap: (index) { // Menangani aksi tap pada item navigasi
         switch (index) { // Menggunakan switch untuk menentukan tindakan berdasarkan indeks yang dipilih
           case 0: // Kasus untuk indeks 0
@@ -33,6 +43,11 @@ class Navbar extends StatelessWidget { // Mendefinisikan kelas Navbar yang merup
               Navigator.pushNamed(context, '/items'); // Navigasi ke rute '/items'
             }
             break; // Keluar dari switch
+          case 4: // Kasus untuk indeks 4 (Profile)
+            if (currentRoute != '/profile') { // Memeriksa apakah rute saat ini bukan '/profile'
+              Navigator.pushNamed(context, '/profile'); // Navigasi ke rute '/profile'
+            }
+            break; // Keluar dari switch
         }
       },
       items: const [ // Daftar item untuk BottomNavigationBar
@@ -45,12 +60,16 @@ class Navbar extends StatelessWidget { // Mendefinisikan kelas Navbar yang merup
           label: 'Users', // Label untuk item kedua
         ),
         BottomNavigationBarItem( // Item ketiga
-          icon: Icon(Icons.local_hospital), // Ikon untuk item ketiga
+          icon: Icon(Icons.personal_injury), // Ikon untuk item ketiga
           label: 'Patients', // Label untuk item ketiga
         ),
         BottomNavigationBarItem( // Item keempat
           icon: Icon(Icons.inventory), // Ikon untuk item keempat
           label: 'Items', // Label untuk item keempat
+        ),
+        BottomNavigationBarItem( // Item kelima - Profile
+          icon: Icon(Icons.account_circle), // Ikon untuk item kelima
+          label: 'Profile', // Label untuk item kelima
         ),
       ],
     );
@@ -66,6 +85,8 @@ class Navbar extends StatelessWidget { // Mendefinisikan kelas Navbar yang merup
         return 2; // Mengembalikan indeks 2
       case '/items': // Kasus untuk rute '/items'
         return 3; // Mengembalikan indeks 3
+      case '/profile': // Kasus untuk rute '/profile'
+        return 4; // Mengembalikan indeks 4
       default: // Kasus default jika tidak ada yang cocok
         return 0; // Mengembalikan indeks 0
     }

@@ -14,21 +14,63 @@ class _PatientListPageState extends State<PatientListPage> { // Mendefinisikan s
   final List<Map<String, dynamic>> patients = [ // Daftar pasien yang disimpan dalam bentuk list
     {
       'id': '1', // ID pasien
-      'name': 'John Doe', // Nama pasien
-      'age': 45, // Usia pasien
-      'condition': 'Hypertension', // Kondisi pasien
+      'name': 'Alice Brown', // Nama pasien yang diperbarui
+      'age': 29, // Usia pasien yang diperbarui
+      'condition': 'Allergy', // Kondisi pasien yang diperbarui
     },
     {
       'id': '2', // ID pasien
-      'name': 'Jane Smith', // Nama pasien
-      'age': 32, // Usia pasien
-      'condition': 'Diabetes', // Kondisi pasien
+      'name': 'Charlie Green', // Nama pasien yang diperbarui
+      'age': 37, // Usia pasien yang diperbarui
+      'condition': 'Flu', // Kondisi pasien yang diperbarui
     },
     {
       'id': '3', // ID pasien
-      'name': 'Bob Johnson', // Nama pasien
-      'age': 58, // Usia pasien
-      'condition': 'Arthritis', // Kondisi pasien
+      'name': 'Diana White', // Nama pasien yang diperbarui
+      'age': 50, // Usia pasien yang diperbarui
+      'condition': 'Asthma', // Kondisi pasien yang diperbarui
+    },
+    {
+      'id': '4',
+      'name': 'Ethan Black',
+      'age': 45,
+      'condition': 'Cold',
+    },
+    {
+      'id': '5',
+      'name': 'Fiona Blue',
+      'age': 60,
+      'condition': 'Heart Disease',
+    },
+    {
+      'id': '6',
+      'name': 'George Red',
+      'age': 22,
+      'condition': 'Migraine',
+    },
+    {
+      'id': '7',
+      'name': 'Hannah Yellow',
+      'age': 33,
+      'condition': 'Back Pain',
+    },
+    {
+      'id': '8',
+      'name': 'Ian Purple',
+      'age': 41,
+      'condition': 'Anxiety',
+    },
+    {
+      'id': '9',
+      'name': 'Julia Orange',
+      'age': 27,
+      'condition': 'Depression',
+    },
+    {
+      'id': '10',
+      'name': 'Kevin Gray',
+      'age': 38,
+      'condition': 'Diabetes',
     },
   ];
 
@@ -97,7 +139,7 @@ class _PatientListPageState extends State<PatientListPage> { // Mendefinisikan s
             ),
             child: ListTile( // Menggunakan ListTile untuk menampilkan informasi pasien
               leading: const CircleAvatar( // Menampilkan avatar lingkaran
-                child: Icon(Icons.person), // Ikon untuk avatar
+                child: Icon(Icons.personal_injury), // Ikon untuk avatar
               ),
               title: Text(patient['name']), // Menampilkan nama pasien
               subtitle: Text('Age: ${patient['age']} - ${patient['condition']}'), // Menampilkan usia dan kondisi pasien

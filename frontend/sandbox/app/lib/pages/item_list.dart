@@ -14,21 +14,63 @@ class _ItemListPageState extends State<ItemListPage> { // Mendefinisikan state u
   final List<Map<String, dynamic>> items = [ // Mendeklarasikan daftar item dengan tipe Map.
     {
       'id': '1', // ID item.
-      'name': 'Laptop', // Nama item.
-      'description': 'High-performance laptop', // Deskripsi item.
-      'price': 999.99, // Harga item.
+      'name': 'Stethoscope', // Nama item.
+      'description': 'High-quality stethoscope', // Deskripsi item.
+      'quantity': 10, // Kuantitas item.
     },
     {
       'id': '2',
-      'name': 'Smartphone',
-      'description': 'Latest model smartphone',
-      'price': 699.99,
+      'name': 'Syringe',
+      'description': 'Disposable syringes, 10ml',
+      'quantity': 15,
     },
     {
       'id': '3',
-      'name': 'Headphones',
-      'description': 'Wireless noise-canceling headphones',
-      'price': 199.99,
+      'name': 'Bandage',
+      'description': 'Sterile bandages, pack of 10',
+      'quantity': 35,
+    },
+    {
+      'id': '4',
+      'name': 'Thermometer',
+      'description': 'Digital thermometer',
+      'quantity': 20,
+    },
+    {
+      'id': '5',
+      'name': 'Gloves',
+      'description': 'Box of disposable gloves',
+      'quantity': 50,
+    },
+    {
+      'id': '6',
+      'name': 'Gauze',
+      'description': 'Sterile gauze pads',
+      'quantity': 30,
+    },
+    {
+      'id': '7',
+      'name': 'Scissors',
+      'description': 'Medical scissors',
+      'quantity': 5,
+    },
+    {
+      'id': '8',
+      'name': 'Tape',
+      'description': 'Medical adhesive tape',
+      'quantity': 25,
+    },
+    {
+      'id': '9',
+      'name': 'Alcohol Swabs',
+      'description': 'Pack of alcohol swabs',
+      'quantity': 100,
+    },
+    {
+      'id': '10',
+      'name': 'Cotton Balls',
+      'description': 'Pack of cotton balls',
+      'quantity': 200,
     },
   ];
 
@@ -97,10 +139,10 @@ class _ItemListPageState extends State<ItemListPage> { // Mendefinisikan state u
             ),
             child: ListTile( // Menggunakan ListTile untuk menampilkan informasi item.
               leading: const CircleAvatar( // Menampilkan avatar lingkaran di sebelah kiri.
-                child: Icon(Icons.shopping_bag), // Ikon belanja.
+                child: Icon(Icons.inventory), // Ikon belanja.
               ),
               title: Text(item['name']), // Menampilkan nama item.
-              subtitle: Text('${item['description']} - \$${item['price'].toStringAsFixed(2)}'), // Menampilkan deskripsi dan harga item.
+              subtitle: Text('${item['description']} - Quantity: ${item['quantity']}'), // Menampilkan deskripsi dan kuantitas item.
               trailing: Row( // Menampilkan tombol edit dan delete di sebelah kanan.
                 mainAxisSize: MainAxisSize.min, // Mengatur ukuran baris.
                 children: [

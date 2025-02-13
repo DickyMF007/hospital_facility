@@ -14,7 +14,7 @@ class _ItemFormPageState extends State<ItemFormPage> { // Mendefinisikan state u
   final _formKey = GlobalKey<FormState>(); // Kunci untuk mengelola status form.
   final _nameController = TextEditingController(); // Kontroler untuk field nama.
   final _descriptionController = TextEditingController(); // Kontroler untuk field deskripsi.
-  final _priceController = TextEditingController(); // Kontroler untuk field harga.
+  final _quantityController = TextEditingController(); // Kontroler untuk field kuantitas.
 
   @override
   void initState() { // Metode yang dipanggil saat state diinisialisasi.
@@ -23,7 +23,7 @@ class _ItemFormPageState extends State<ItemFormPage> { // Mendefinisikan state u
     if (widget.item != null) {
       _nameController.text = widget.item!['name']; // Mengisi kontroler nama dengan nama item.
       _descriptionController.text = widget.item!['description']; // Mengisi kontroler deskripsi dengan deskripsi item.
-      _priceController.text = widget.item!['price'].toString(); // Mengisi kontroler harga dengan harga item.
+      _quantityController.text = widget.item!['quantity'].toString(); // Mengisi kontroler kuantitas dengan kuantitas item.
     }
   }
 
@@ -34,7 +34,7 @@ class _ItemFormPageState extends State<ItemFormPage> { // Mendefinisikan state u
         'id': widget.item?['id'] ?? DateTime.now().millisecondsSinceEpoch.toString(), // Mengambil ID item atau membuat ID baru.
         'name': _nameController.text, // Mengambil nama dari kontroler.
         'description': _descriptionController.text, // Mengambil deskripsi dari kontroler.
-        'price': double.parse(_priceController.text), // Mengambil harga dari kontroler dan mengonversinya ke double.
+        'quantity': int.parse(_quantityController.text), // Mengambil kuantitas dari kontroler dan mengonversinya ke int.
       };
 
       Navigator.pop(context, itemData); // Menutup halaman dan mengembalikan data item.
@@ -83,18 +83,18 @@ class _ItemFormPageState extends State<ItemFormPage> { // Mendefinisikan state u
                 },
               ),
               const SizedBox(height: 16), // Menambahkan jarak antara field.
-              TextFormField( // Field untuk input harga.
-                controller: _priceController, // Mengaitkan kontroler harga.
+              TextFormField( // Field untuk input kuantitas.
+                controller: _quantityController, // Mengaitkan kontroler kuantitas.
                 decoration: const InputDecoration( // Mengatur dekorasi untuk field.
-                  labelText: 'Price', // Label untuk field.
+                  labelText: 'Quantity', // Label untuk field.
                   border: OutlineInputBorder(), // Mengatur border field.
                 ),
                 keyboardType: TextInputType.number, // Mengatur keyboard untuk input angka.
                 validator: (value) { // Validator untuk memeriksa input.
                   if (value == null || value.isEmpty) { // Memeriksa apakah input kosong.
-                    return 'Please enter a price'; // Mengembalikan pesan kesalahan jika kosong.
+                    return 'Please enter a quantity'; // Mengembalikan pesan kesalahan jika kosong.
                   }
-                  if (double.tryParse(value) == null) { // Memeriksa apakah input dapat diubah menjadi double.
+                  if (int.tryParse(value) == null) { // Memeriksa apakah input dapat diubah menjadi int.
                     return 'Please enter a valid number'; // Mengembalikan pesan kesalahan jika tidak valid.
                   }
                   return null; // Mengembalikan null jika valid.
@@ -118,7 +118,7 @@ class _ItemFormPageState extends State<ItemFormPage> { // Mendefinisikan state u
     // Menghapus kontroler untuk membebaskan sumber daya.
     _nameController.dispose(); // Menghapus kontroler nama.
     _descriptionController.dispose(); // Menghapus kontroler deskripsi.
-    _priceController.dispose(); // Menghapus kontroler harga.
+    _quantityController.dispose(); // Menghapus kontroler kuantitas.
     super.dispose(); // Memanggil dispose dari superclass.
   }
 }

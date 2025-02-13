@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart'; // Mengimpor paket material dari Flutter untuk menggunakan widget material.
 
 import '../components/navbar.dart'; // Mengimpor komponen Navbar dari direktori components.
+import 'item_list.dart'; // Ensure this import is present
+import 'patient_list.dart'; // Ensure this import is present
 
 class HomePage extends StatelessWidget { // Mendefinisikan kelas HomePage yang merupakan StatelessWidget.
   const HomePage({super.key}); // Konstruktor untuk HomePage, menggunakan super.key untuk mendukung key.
@@ -103,7 +105,7 @@ class HomePage extends StatelessWidget { // Mendefinisikan kelas HomePage yang m
                   context,
                   'Patients', // Judul kartu.
                   Icons.personal_injury, // Ikon untuk kartu.
-                  Colors.green, // Warna untuk kartu.
+                  Colors.red, // Warna untuk kartu.
                   () => Navigator.pushNamed(context, '/patients'), // Aksi saat kartu ditekan.
                 ),
                 _buildNavCard( // Kartu ketiga.
@@ -118,7 +120,7 @@ class HomePage extends StatelessWidget { // Mendefinisikan kelas HomePage yang m
                   'Reports', // Judul kartu.
                   Icons.bar_chart, // Ikon untuk kartu.
                   Colors.purple, // Warna untuk kartu.
-                  () {}, // TODO: Add reports route (Aksi saat kartu ditekan belum ditentukan).
+                  () => Navigator.pushNamed(context, '/'), // Aksi saat kartu ditekan.
                 ),
               ],
             ),
@@ -184,6 +186,37 @@ class HomePage extends StatelessWidget { // Mendefinisikan kelas HomePage yang m
           ),
         ),
       ),
+    );
+  }
+
+  // Creates a route with a book-like page transition
+  Route _createRoute(String routeName) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) {
+        switch (routeName) {
+          case '/patients':
+            return const PatientListPage(); // Replace with your actual PatientList widget
+          case '/items':
+            return const ItemListPage(); // Replace with your actual ItemList widget
+          case '/reports':
+            return const HomePage(); // Replace with your actual ReportsPage widget
+          default:
+            return const HomePage(); // Fallback to HomePage
+        }
+      },
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(1.0, 0.0); // Start from the right
+        const end = Offset.zero; // End at the center
+        const curve = Curves.easeInOut;
+
+        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        var offsetAnimation = animation.drive(tween);
+
+        return SlideTransition(
+          position: offsetAnimation,
+          child: child,
+        );
+      },
     );
   }
 }
